@@ -1,0 +1,16 @@
+<mat-toolbar color="primary">
+  <span>Welcome <ng-container *ngIf="username != undefined">{{username}}</ng-container></span>
+  <span class="spacer"></span>
+  <mat-icon
+  *ngIf="isAuthenticated"
+    (click)="logout()"
+    class="logout"
+  >logout</mat-icon>
+  <mat-icon
+  *ngIf="!isAuthenticated"
+    (click)="login()"
+    class="logout"
+  >login</mat-icon>
+</mat-toolbar>
+
+<router-outlet></router-outlet>
