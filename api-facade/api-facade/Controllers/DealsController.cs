@@ -6,27 +6,46 @@ using System.Linq;
 using System.Threading.Tasks;
 using api_facade.Models;
 using api_facade.Services;
+using MassTransit;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Cors;
 using Newtonsoft.Json;
+using Troupon.Events;
 
 namespace api_facade.Controllers
 {
     [ApiController]
-    [Route("App2/[controller]")]
-    [Authorize]
+    [Route("Catalog/[controller]")]
+    
     public class DealsController : ControllerBase
     {
-        [HttpGet]
-        public IEnumerable<Deal> Get()
+        
+        private readonly IRequestClient<DealsRequested> _requestClient;
+        private readonly IPublishEndpoint _publishEndpoint;
+
+        public DealsController(
+            IRequestClient<DealsRequested> requestClient,
+            IPublishEndpoint publishEndpoint)
         {
-            var rpcClient = new RpcClient();
+            _requestClient = requestClient;
+            _publishEndpoint = publishEndpoint;
+        }
 
-            var response = rpcClient.Call(string.Empty);
+        [HttpGet]
+        [Authorize]
+        public async Task<IEnumerable<Deal>> Get()
+        {
+            var response = await _requestClient.GetResponse<DealsRequestedResult>("");
 
-            rpcClient.Close();
+            return response.Message.Deals;
+        }
 
-            return JsonConvert.DeserializeObject<Deal[]>(response);
+        [HttpPost("Publish")]
+        public IActionResult Publish()
+        {
+            _publishEndpoint.Publish<PublishDealRequest>(new PublishDealRequest{DealId = 1});
+
+            return Ok();
         }
     }
 }

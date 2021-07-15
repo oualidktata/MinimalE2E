@@ -17,7 +17,7 @@ export class HomeComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.http.get<Deal[]>('https://localhost:44355/App2/Deals')
+    this.http.get<Deal[]>('https://localhost:44355/Catalog/Deals')
     .subscribe(res => {
       this.deals = res;
     })

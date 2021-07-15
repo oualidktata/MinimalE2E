@@ -11,8 +11,11 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using MassTransit.MultiBus;
+using MassTransit;
 using Okta.AspNet;
 using Okta.AspNetCore;
+using Troupon.Events;
 
 namespace api_facade
 {
@@ -56,6 +59,19 @@ namespace api_facade
                         "v1",
                         new OpenApiInfo {Title = "api_facade", Version = "v1"});
                 });
+
+            services.AddMassTransit(
+                x =>
+                {
+                    x.UsingRabbitMq((
+                        context,
+                        cfg) => cfg.Host(
+                        "localhost",
+                        "Troupon"));
+                    x.AddRequestClient<DealsRequested>();
+                });
+
+            services.AddMassTransitHostedService();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
