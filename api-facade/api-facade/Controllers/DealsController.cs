@@ -16,10 +16,8 @@ namespace api_facade.Controllers
 {
     [ApiController]
     [Route("Catalog/[controller]")]
-    
     public class DealsController : ControllerBase
     {
-        
         private readonly IRequestClient<DealsRequested> _requestClient;
         private readonly IPublishEndpoint _publishEndpoint;
 
@@ -43,7 +41,7 @@ namespace api_facade.Controllers
         [HttpPost("Publish")]
         public IActionResult Publish()
         {
-            _publishEndpoint.Publish<PublishDealRequest>(new PublishDealRequest{DealId = 1});
+            _publishEndpoint.Publish<PublishDealRequest>(new PublishDealRequest {DealId = 1});
 
             return Ok();
         }

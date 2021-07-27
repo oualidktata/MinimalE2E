@@ -51,6 +51,9 @@ namespace api_facade
 
             services.AddAuthorization();
 
+            services.AddMemoryCache();
+            services.AddMiniProfiler(options => options.RouteBasePath = "/profiler");
+
             services.AddControllers();
             services.AddSwaggerGen(
                 c =>
@@ -102,6 +105,9 @@ namespace api_facade
                         "api_facade v1"));
             }
 
+
+            app.UseMiniProfiler();
+
             app.UseHttpsRedirection();
 
             app.UseRouting();
@@ -118,6 +124,7 @@ namespace api_facade
                     .AllowCredentials());
             
             app.UseEndpoints(endpoints => { endpoints.MapControllers(); });
+
         }
     }
 }
