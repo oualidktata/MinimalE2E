@@ -4,7 +4,6 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using api_facade.Models;
 using api_facade.Services;
 using MassTransit;
 using Microsoft.AspNetCore.Authorization;
@@ -36,6 +35,14 @@ namespace api_facade.Controllers
             var response = await _requestClient.GetResponse<DealsRequestedResult>("");
 
             return response.Message.Deals;
+        }
+
+        [HttpPost]
+        public IActionResult Add(AddDealCommand command)
+        {
+            _publishEndpoint.Publish<AddDealCommand>(command);
+
+            return Ok();
         }
 
         [HttpPost("Publish")]

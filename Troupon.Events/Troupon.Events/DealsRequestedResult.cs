@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using api_facade.Models;
 
 namespace Troupon.Events
 {

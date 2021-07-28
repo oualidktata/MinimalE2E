@@ -13,6 +13,7 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
 using Troupon.Catalog.Consumers;
+using Troupon.Catalog.Services;
 
 namespace Troupon.Catalog
 {
@@ -43,6 +44,7 @@ namespace Troupon.Catalog
                 x =>
                 {
                     x.AddConsumer<DealsRequestedConsumer>();
+                    x.AddConsumer<DealAddedConsumer>();
 
                     x.SetKebabCaseEndpointNameFormatter();
 
@@ -59,6 +61,8 @@ namespace Troupon.Catalog
                 });
 
             services.AddMassTransitHostedService();
+
+            services.AddSingleton<IDealsDatabase, DealsDatabase>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

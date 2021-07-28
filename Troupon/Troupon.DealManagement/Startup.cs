@@ -45,6 +45,7 @@ namespace Troupon.DealManagement
                 x =>
                 {
                     x.AddConsumer<PublishDealConsumer>();
+                    x.AddConsumer<AddDealConsumer>();
 
                     x.SetKebabCaseEndpointNameFormatter();
 
