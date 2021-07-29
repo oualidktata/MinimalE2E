@@ -1,0 +1,48 @@
+.deals {
+  display: flex;
+  flex-wrap: wrap;
+
+  .deal {
+    margin: 20px;
+    width: 350px;
+    height: 310px;
+
+    .name {
+      font-weight: bold;
+      font-size: 18px;
+    }
+
+
+    .price {
+      margin-top: 10px;
+      display: flex;
+      font-size: 20px;
+      font-weight: bold;
+      align-items: center;
+
+      .before {
+        color: darkgray;
+        font-weight: normal;
+        margin-right: 5px;
+        text-decoration: line-through;
+      }
+
+      .current {
+        color: darkgreen;
+        span {
+          font-size: 14px;
+          font-weight: normal;
+        }
+      }
+
+      .rebate {
+        margin-left: 5px;
+        font-size: 12px;
+        color: darkgreen;
+        background-color: #EAFCDE;
+        border-radius: 10px;
+        padding: 5px;
+      }
+    }
+  }
+}

@@ -34,7 +34,8 @@
               "./node_modules/@angular/material/prebuilt-themes/indigo-pink.css",
               "projects/troupon-web/src/styles.less"
             ],
-            "scripts": []
+            "scripts": [
+            ]
           },
           "configurations": {
             "production": {
@@ -56,7 +57,7 @@
                   "with": "projects/troupon-web/src/environments/environment.prod.ts"
                 }
               ],
-              "outputHashing": "all"
+              "outputHashing": "none"
             },
             "development": {
               "buildOptimizer": false,
@@ -102,6 +103,212 @@
             "styles": [
               "./node_modules/@angular/material/prebuilt-themes/indigo-pink.css",
               "projects/troupon-web/src/styles.less"
+            ],
+            "scripts": []
+          }
+        }
+      }
+    },
+    "troupon-catalog": {
+      "projectType": "application",
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "less"
+        },
+        "@schematics/angular:application": {
+          "strict": true
+        }
+      },
+      "root": "projects/troupon-catalog",
+      "sourceRoot": "projects/troupon-catalog/src",
+      "prefix": "app",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/troupon-catalog",
+            "index": "projects/troupon-catalog/src/index.html",
+            "main": "projects/troupon-catalog/src/main.ts",
+            "polyfills": "projects/troupon-catalog/src/polyfills.ts",
+            "tsConfig": "projects/troupon-catalog/tsconfig.app.json",
+            "inlineStyleLanguage": "less",
+            "assets": [
+              "projects/troupon-catalog/src/favicon.ico",
+              "projects/troupon-catalog/src/assets"
+            ],
+            "styles": [
+              "projects/troupon-catalog/src/styles.less"
+            ],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "500kb",
+                  "maximumError": "1mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "2kb",
+                  "maximumError": "4kb"
+                }
+              ],
+              "fileReplacements": [
+                {
+                  "replace": "projects/troupon-catalog/src/environments/environment.ts",
+                  "with": "projects/troupon-catalog/src/environments/environment.prod.ts"
+                }
+              ],
+              "outputHashing": "none"
+            },
+            "development": {
+              "buildOptimizer": false,
+              "optimization": false,
+              "vendorChunk": true,
+              "extractLicenses": false,
+              "sourceMap": true,
+              "namedChunks": true
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "configurations": {
+            "production": {
+              "browserTarget": "troupon-catalog:build:production"
+            },
+            "development": {
+              "browserTarget": "troupon-catalog:build:development"
+            }
+          },
+          "defaultConfiguration": "development"
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "troupon-catalog:build"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/troupon-catalog/src/test.ts",
+            "polyfills": "projects/troupon-catalog/src/polyfills.ts",
+            "tsConfig": "projects/troupon-catalog/tsconfig.spec.json",
+            "karmaConfig": "projects/troupon-catalog/karma.conf.js",
+            "inlineStyleLanguage": "less",
+            "assets": [
+              "projects/troupon-catalog/src/favicon.ico",
+              "projects/troupon-catalog/src/assets"
+            ],
+            "styles": [
+              "projects/troupon-catalog/src/styles.less"
+            ],
+            "scripts": []
+          }
+        }
+      }
+    },
+    "troupon-deal-management": {
+      "projectType": "application",
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "less"
+        },
+        "@schematics/angular:application": {
+          "strict": true
+        }
+      },
+      "root": "projects/troupon-deal-management",
+      "sourceRoot": "projects/troupon-deal-management/src",
+      "prefix": "app",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/troupon-deal-management",
+            "index": "projects/troupon-deal-management/src/index.html",
+            "main": "projects/troupon-deal-management/src/main.ts",
+            "polyfills": "projects/troupon-deal-management/src/polyfills.ts",
+            "tsConfig": "projects/troupon-deal-management/tsconfig.app.json",
+            "inlineStyleLanguage": "less",
+            "assets": [
+              "projects/troupon-deal-management/src/favicon.ico",
+              "projects/troupon-deal-management/src/assets"
+            ],
+            "styles": [
+              "projects/troupon-deal-management/src/styles.less"
+            ],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "500kb",
+                  "maximumError": "1mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "2kb",
+                  "maximumError": "4kb"
+                }
+              ],
+              "fileReplacements": [
+                {
+                  "replace": "projects/troupon-deal-management/src/environments/environment.ts",
+                  "with": "projects/troupon-deal-management/src/environments/environment.prod.ts"
+                }
+              ],
+              "outputHashing": "none"
+            },
+            "development": {
+              "buildOptimizer": false,
+              "optimization": false,
+              "vendorChunk": true,
+              "extractLicenses": false,
+              "sourceMap": true,
+              "namedChunks": true
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "configurations": {
+            "production": {
+              "browserTarget": "troupon-deal-management:build:production"
+            },
+            "development": {
+              "browserTarget": "troupon-deal-management:build:development"
+            }
+          },
+          "defaultConfiguration": "development"
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "troupon-deal-management:build"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/troupon-deal-management/src/test.ts",
+            "polyfills": "projects/troupon-deal-management/src/polyfills.ts",
+            "tsConfig": "projects/troupon-deal-management/tsconfig.spec.json",
+            "karmaConfig": "projects/troupon-deal-management/karma.conf.js",
+            "inlineStyleLanguage": "less",
+            "assets": [
+              "projects/troupon-deal-management/src/favicon.ico",
+              "projects/troupon-deal-management/src/assets"
+            ],
+            "styles": [
+              "projects/troupon-deal-management/src/styles.less"
             ],
             "scripts": []
           }

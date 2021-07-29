@@ -1,0 +1,13 @@
+<div class="deals">
+  <mat-card class="deal" *ngFor="let deal of deals">
+    <div class="image"><img [src]="deal.image"></div>
+    <div class="name">{{deal.name}}</div>
+    <div class="address">{{deal.address}}</div>
+    <div class="price">
+      <div class="before" *ngIf="deal.originalPrice > 0">${{deal.originalPrice}}</div>
+      <div class="current"><span>From</span> ${{deal.currentPrice}}</div>
+      <div class="rebate"  *ngIf="deal.originalPrice > 0">{{calculateRebate(deal)}}% OFF</div>
+    </div>
+    <div class="desc">{{deal.description}}</div>
+  </mat-card>
+</div>
