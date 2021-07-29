@@ -29,7 +29,7 @@ namespace api_facade.Controllers
         }
 
         [HttpGet]
-        [Authorize]
+        /*[Authorize]*/
         public async Task<IEnumerable<Deal>> Get()
         {
             var response = await _requestClient.GetResponse<DealsRequestedResult>("");
